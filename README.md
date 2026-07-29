@@ -196,11 +196,11 @@ backend/README.md
 You can include screenshots of:
 
 - Landing Interface
-![Landing Interface](image.png)
+![Landing Interface](screenshots/image.png)
 - CSV Uplaod
-![CSV Upload](image-1.png)
+![CSV Upload](screenshots/image-1.png)
 - Table Pagination
-![Table Pagination](image-2.png)
+![Table Pagination](screenshots/image-2.png)
 
 ---
 
