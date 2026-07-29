@@ -195,11 +195,12 @@ backend/README.md
 
 You can include screenshots of:
 
-- CSV upload
-- Interactive table
-- Highlighted cells
-- Generated summary
-- Complete application interface
+- Landing Interface
+![Landing Interface](image.png)
+- CSV Uplaod
+![CSV Upload](image-1.png)
+- Table Pagination
+![Table Pagination](image-2.png)
 
 ---
 
