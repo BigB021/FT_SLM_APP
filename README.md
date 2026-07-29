@@ -220,8 +220,8 @@ Industrial Internship Project
 
 | Module | Documentation |
 |---------|---------------|
-| Frontend | [`FT_SLM_APP/README.md`](FT_SLM_APP/README.md) |
-| Backend | [`backend/README.md`](backend/README.md) |
+| Frontend | ["https://github.com/BigB021/FT_SLM_APP/blob/master/FT_SLM_APP/README.MD"](FT_SLM_APP/README.md) |
+| Backend | ["https://github.com/BigB021/FT_SLM_APP/blob/master/backend/README.MD](backend/README.md) |
 
 ---
 
