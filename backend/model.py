@@ -19,6 +19,15 @@ else:
 
 #----------------------------------------------- Load the Model -----------------------------------------------
 def load_fine_tuned_model():
+    """
+    Loads the local FLAN-T5 base model together with the
+    fine-tuned LoRA adapter
+    Automatically loads onto the GPU if CUDA is available.
+    Sets the model to evaluation mode.
+
+    Returns: tuple(model, tokenizer)
+    
+    """
     base_model = AutoModelForSeq2SeqLM.from_pretrained("./models/flan-t5-base-local", device_map="auto", trust_remote_code=True, dtype=torch.bfloat16)
 
     fine_tuned_model = PeftModel.from_pretrained(
@@ -155,14 +164,18 @@ def build_table_str(table, keep_indices, highlighted_cells):
     return "\n".join(lines)
 
 def build_prompt(sample):
-    """ Builds a windowed prompt for the model, keeping only the rows needed
-    to describe the highlighted cells. Highlighted cells are tagged with
-    (r,c) both in the table body and in the Highlighted Cells
-    section - the same literal anchor in both places, so the model can look
-    up the cell directly instead of resolving "Row: X, Column: Y" by
-    counting. Only highlighted cells are tagged (not every cell) to keep
-    token cost close to the un-tagged windowed baseline - see Section 4's
-    build_table_str docstring for why full-table tagging was rejected. """
+    """ 
+    Constructs the final prompt sent to the language model.
+
+    The prompt consists of:
+
+    - Task description
+    - Page title
+    - Section title
+    - Additional context
+    - Highlighted cells
+    - Windowed table
+     """
     table = sample["table"]
     highlighted_cells = sample["highlighted_cells"]
 
@@ -194,6 +207,19 @@ Do not invent facts.\n"""
 
 #----------------------------------------------- Inference -----------------------------------------------
 def generate_summary(model, tokenizer, prompt, max_new_tokens=64, num_beams=4):
+    """
+    Runs inference using the fine-tuned language model.
+
+    Parameters:model, tokenizer, prompt
+
+    Returns: Generated natural language summary :str
+
+    Generation Settings
+    -------------------
+    Beam Search
+    No Sampling
+    64 Maximum Tokens
+    """
     inputs = tokenizer(
         prompt,
         truncation=True,

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { PiBrainBold } from "react-icons/pi";
 import FileUpload from './components/FileUpload';
-import DataTable from './components/Datatable';
-import SummaryPanel from './components/Summarypanel';
+import DataTable from './components/DataTable';
+import SummaryPanel from './components/SummaryPanel';
 import { summarize } from './api/api';
 import type { UploadResponse, HighlightedCell, SummarizeResponse } from './api/api';
 
